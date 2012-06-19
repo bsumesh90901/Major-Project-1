@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Interrupt</title>
+</head>
+<body>
+<h1>Interrupts</h1>
+
+<h2>Introduction</h2>
+	<p>
+	Interrupts are mechanisms by which the user code interrupts the execution of the processor and passes control to the kernel to accomplish low level functionalities like disk access, arithmetic exception handling etc.
+	</p>
+	<p>
+	<b>Interrupt Service Routine(ISR): </b> The kernel provides routines to accomplish the functionality for which an interrupt has been generated. These routines are known as Interrupt Service Routines.
+
+	<div><b>Note:</b> Every ISR should end with an IRET instruction.</div>
+	</p>
+<h2>The <tt>INT</tt> instruction</h2>
+	<p>
+	The instruction used to generate an interrupt is <tt>INT</tt>.</p>
+	<div>Syntax :<tt>INT</tt> <em>n</em> 
+	<p>
+	The INT instruction passes control to the Interrupt Service Routine (ISR) for this interrupt located at the physical address 
+	computed using the value n.
+	</p>
+	<p>
+	Address computation is done as follows. 
+	The physical address of the ISR corresponding to interrupt number n is given by:
+	<div> 
+	Physical Address = (56+n) x Page Size
+	</div>
+	</p>
+	<p>
+	Figure~\ref{interrupt table} summarises the physical address to which the control is transferred for each interrupt. Note that the interrupts are disabled once this instruction is executed, since we do not allow interrupts to occur in kernel mode.
+	</p>
+	<img src="images/interrupt_table.png">
+	<div id="imageCaption">Interrupts and their locations in the memory</div>
+
+
+<h2>Types of Interrupts</h2>
+	<p>
+	There are 8 interrupts (numbered from 0 to 7) supported by the ESIM architecture. The interrupts 0 is a hardware interrupts and the remaining interrupts (1 to 7) are software interrupts.
+	</p>
+	<p>
+	Details of the <em>hardware interrupt</em> is as follows.
+
+	<ul>
+		<li><tt>INT 0 :</tt> This is the timer interrupt \index{Timer} which interrupts the processor forcing a context switch. It contains the code for the scheduler of the operating system (refer section~\ref{chp:scheduler}), which schedules the CPU time among the various active processes. Note that this interrupt is machine generated and cannot be called.
+
+		<p>Details of \emph{software interrupts} are as follows.</p>
+		<ul>
+		<li><tt>INT 1--4:</tt> These interrupts are used for the various file system calls. (Refer section~\ref{fssyscall} for File System Calls)
+		<li><tt>INT 5--7:</tt> These interrupts are used for the various process system calls. (Refer section~\ref{procsyscall} for Process System Calls)
+		</ul>
+	</ul>
+	The interrupts 1--7  are unprivileged and can be called from user mode.
+	</p>
+
+<h2>Calling Convention</h2>
+	<p>
+	In this section, we explain the calling and returning conventions for interrupts.
+	</p>
+	<h3>Calling Convention</h3>
+		<p>
+		Before switching the control to the ISR using the INT instruction the user program does the following:
+		<ol>
+			<li> Push a dummy value for storing the return value of the interrupt onto the stack.
+			<li> Push the arguments to the interrupt.
+			<li> Make the Interrupt call using the INT instruction.
+		</ol>
+		</p>
+		<p>
+		The INT instruction pushes the IP+1 value on to the stack and then starts the execution of the corresponding ISR. When the ISR finishes its execution, IRET instruction is called. This IRET instruction pops the IP+1 value from the stack top into the IP register and the execution of the user program is resumed from the point where it was interrupted.
+		</p>
+
+	<h3>Returning Convention</h3>
+		<p>
+		After returning from the ISR using the IRET instruction the user program does the following:
+		<ol>
+			<li> Pop out the arguments from the stack.
+			<li> Pop out the return value.
+		</ol>
+		</p>
+	<p>
+	Figure~\ref{fig:calling_convention} explains the state of the stack at various stages.
+	</p>
+	<img src="./images/calling_convention.png" alt="Calling Convention">
+	<div id="imageCaption">Recommended calling and returning convention for interrupts</div>
+<footer>The convention given above is already built into the AP-SIL compiler. It has been given only to help you understand the internal workings better.</footer>
+</body>
+</html>

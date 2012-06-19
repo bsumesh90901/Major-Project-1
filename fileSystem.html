@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>FileSystem</title>
+</head>
+<body>
+
+<h1>File System</h1>
+
+<h2>Introduction</h2>
+
+	<dfn>
+		<b>Block :</b> It is the basic unit of storage in the disk.
+	</dfn>
+	<p>	
+	The disk can be thought of as consisting of a linear sequence of 512 blocks.
+	The size of each block is equal to that of a page in the memory (256 words). 
+	</p>
+	<h2>Disk Structure</h2>
+	<p>
+	The basic structure of the disk is shown in figure~\ref{fig:disk}.
+	</p>
+	<img src="./images/diskStructure.png" alt="Structure of disk">
+	<div id="imageCaption">Structure of the disk</div>
+	
+<h2>Addressing</h2>
+
+	<dfn>
+		<b>Block number :</b> Any particular block in the disk is addressed by the corresponding number in the sequence 0 to 511 known as the <em>block number</em>.
+	</dfn>
+	<img src="./images/diskAddressing.png" alt="Disk Addressing">
+	<div id="imageCaption">Disk addressing</div>
+
+
+	<p class="example">
+		In figure~\ref{fig:disk addr}, the 2<sup>nd</sup> block of the disk has a block number 1. In general the i<sup>th</sup> block has the block number (i-1) for 1 &le; n &le; 512. 
+	</p>
+
+<h2>Disk Free List</h2>
+
+	<ul>
+		<li>  The Free List of the disk consists of 512 entries. Each entry is of size one word.
+		<li>  The total size of the free list is thus 2 blocks or 512 words (512(= no. of entries) x 1(= size of one entry) = 512 words).
+		<li>  It is present in blocks 9 and 10 of the disk. Refer figure~\ref{fig:disk}. \index{Disk!Free List Location}
+		<li>  Each entry of the free list contains a value of either 0 or 1 indicating whether the corresponding block in the disk is free or not respectively (It should be ensured that the first 13 entries are always marked used).
+	</ul>
+	<p class="example">
+		Figure~\ref{fig:disk free list} indicates that the blocks 0, 1 and 511 of the disk are not free while blocks 2 and 48 are free.
+	</p>
+	<img src="./images/disk_free_list.png" alt="A Sample Disk Free List">
+	<div id="imageCaption">A sample free list of the disk</div>
+
+<h2>File</h2>
+	<p>
+	A file \index{File} is a collection of data identified by a name. Every file in the disk has a <i>Basic Block</i> and several <i>Data Blocks</i>. They are defined as follows:
+	<ul>
+		<li><b>Data Blocks :</b>  These blocks contain the actual data of a file. \index{File!Data Block}
+		<li>Basic Block :</b>  It consists of information about the data of a file. \index{File!Basic Block}
+		<ul>
+			<li> The basic block structure is shown in figure~\ref{fig:basic block}. \index{File!Basic Block Structure}</li>
+			<img src="./images/basic_block.png" alt="Basic Block Structure">
+			<div id="imageCaption">Structure of the basic block of a file</div>
+			<li> The basic block consists of the <i>Block List</i> and the <i>Header</i>.
+			<li><b>Block List :</b> It is similar to an index in a book which tells which chapter starts from which page.
+			<ul>
+				<li> The block list consists of 128 entries.
+				<li> Each entry is of size one word.
+				<li> The size of the block list is thus 128 words (128(= no. of entries) x 1(= size of an entry) = 128 words).
+				<li> The value contained in an entry of the block list gives the block number of the corresponding data block in the disk.
+			</ul>
+			<li><b>Header :</b> The header contains the header information relating to the file. Currently this is unused, but at a later stage can be used to store information such as file modification date/time, author of the file etc.
+		</ul>
+	</ul>
+	</p>
+	<p class="example">
+	<img src="./images/basic_block_example.png" alt="Basic Block Example">
+	<div id="imageCaption">Example illustrating the basic block of a file</div>
+		<p>
+		Consider the example illustrated by figure~\ref{basic block example}.
+		From the figure, we infer the following. 
+		<ul>
+			<li>  The zeroth data block of the file resides at the disk block whose block number is 48. 
+			<li>  The first data block of the file resides at the disk block whose block number is 163.
+			<li> The ith data block of the file resides at the disk block whose block number is 55 where  0&le; i &le; 127. 
+			<li>  The 127th data block of the file resides at the disk block whose block number is 243.
+		</ul>
+		</p>
+	</p>
+
+	<h3>File Types</h3>
+		<p>
+		There are two types of files in the ESIM architecture. They are:
+		<ol>
+			<li><b>Data files :</b> These files contain data or information that is used by the programs. They can occupy a maximum of 129 blocks (1 basic block + 0 - 128 data blocks).
+			<li><b>Executable files :</b> These contain programs that the user wishes to run on the machine. They occupy 4 blocks (1 basic block + 3 data blocks) of the disk.
+		</ol>
+		</p>
+
+	<h3>Executable File Format</h3>
+		<p>
+		Any executable file has the following format. Refer figure~\ref{fig:executable}.
+		<ol>
+			<li>  It consists of the <em>Code section</em> and the <em>Data section</em>.
+			<li><b>Code section :</b> This section contains the actual code to be run on the machine. It spans 2 blocks irrespective of the size of the code.
+			\index{Executable File Format!Code Section}
+			<li><b>Data Section :</b> This section consists of data that is used in the code which cannot be stored in a register. The registers then store the logical address of the corresponding data residing in the data section. It spans 1 block. \index{Executable File Format!Data Section}
+		</ol>
+
+		<img src="./images/executable.png" alt="Example illustrating the structure of an executable in the disk">
+		<div id="imageCaption">Example illustrating the structure of an executable in the disk<div>
+		</p>
+<h2>File Allocation Table (FAT)</h2>
+	<p>
+	<em>File allocation table</em> (FAT), as the name suggests, is a table that has an entry for each file present in the disk.
+	</p>
+	<ul>
+		<li> FAT of the filesystem consists of 32 entries. Thus there can be a maximum of 32 files. 
+		<li> Each entry is of size 16 words.
+		<li> Total size of the FAT is thus 512 words (32 (= number of entries) x 16(= size of one entry) = 512 words).
+		<li> It is a disk data structure and occupies block numbers 11 and 12 of the disk. Refer figure~\ref{fig:disk}. 
+		\index{File Allocation Table!Location in disk}
+	</ul>
+	<p>
+	The structure of a FAT entry is shown in figure~\ref{fig:fat_entry}. 
+	</p>
+	<img src="./images/fat_entry.png" alt="Structure of a FAT entry">
+	<div id="imageCaption">Structure of a FAT entry</div>
+	<p>
+	The FAT entry consists of the
+	\index{File Allocation Table!FAT Entry}
+	<ol>
+		<li><b>File Name :</b> It is an identification of a file. It can be of maximum 15 characters (and thus requires 1 word). Typical file names are <tt>student.txt</tt>, <tt>calc.sim</tt>.
+		<li><b>File size :</b> It indicates the number of words occupied by a file. It varies from 0 words to (128 x 256) words (depending upon the number of data blocks it has). It occupies one word in the FAT entry.
+		<li><b>Block number of basic block :</b> It contains the block number where the basic block of a file resides in the disk. It occupies one word in the FAT entry.
+	</ol>
+	</p>
+
+</body>
+</html>
