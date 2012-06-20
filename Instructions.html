@@ -1,3 +1,5 @@
+<!--Latex References Fixed -->
+
 <html>
 <head>
 <title>Instructions</title>
@@ -22,16 +24,16 @@ The processor comes to know about the mode in which the system is running by loo
 <h2>Classification</h2>
 	<h3>Unprivileged Instructions</h3>
 	<p>
-	All the instructions in the SIM architecture except the HALT instruction constitute the unprivileged instructions. In addition to that, we have five more instructions in the \ESIM architecture, one interrupt service instruction and four instructions for string operations. They are:
+	All the instructions in the SIM architecture except the HALT instruction constitute the unprivileged instructions. In addition to that, we have five more instructions in the ESIM architecture, one interrupt service instruction and four instructions for string operations. They are:
 	<ul>
 		<li><tt>INT</tt> 
 		<div>Syntax : INT <em>no</em></div>
 		<p>
-		This instruction generates an interrupt to the kernel with <em>no</em> as a parameter. It pushes the current IP+1 value into the stack and switches the machine from <i>User mode</i> to <i>Kernel mode</i>. The address of the first instruction of the specified ISR is stored into the IP register. Execution is started at the address specified IP. Refer section~\ref{interrupts} to know more about interrupts.
+		This instruction generates an interrupt to the kernel with <em>no</em> as a parameter. It pushes the current IP+1 value into the stack and switches the machine from <i>User mode</i> to <i>Kernel mode</i>. The address of the first instruction of the specified ISR is stored into the IP register. Execution is started at the address specified IP.
 		</p>
 		<li> <tt>SIN Rn</tt> - This instruction is used to take strings as input. The input string is stored in the data section of the program at the logical address specified by the value in Rn.
 		
-		<li><tt>SOUT Rn</tt> - This instruction prints the string stored at the logical address specified by the value in Rn. Figure~\ref{sout example} illustrates this instruction.
+		<li><tt>SOUT Rn</tt> - This instruction prints the string stored at the logical address specified by the value in Rn.
 		<img src="./images/sout_example.png" alt="Example For SOUT">
 
 		<li><tt>STRCPY Ri Rj</tt> - This instruction copies the string stored in 
@@ -49,7 +51,6 @@ The processor comes to know about the mode in which the system is running by loo
 		<li><tt>IRET</tt>
 		<div>Syntax : IRET</div>
 		<p>IRET tells the processor that the interrupt handler has finished. This instruction pops the return address of the process from the stack into the IP register and switches the machine from kernel mode to user mode.
-		Refer section ~\ref{interrupts} to know more about the IRET instruction.
 		</p>
 		<li><tt>LOAD</tt>
 		<div>Syntax : LOAD <em>pg_no</em> <em>block_no</em></div>
@@ -64,6 +65,7 @@ The processor comes to know about the mode in which the system is running by loo
 		<p>This instruction causes the simulator to halt immediately.</p>
 	</ul>
 	</p>
-<footer>These are macros which initialise the DMA controller with the arguments passed and invoke it for the actual transfer to take place.</footer>
+<div id="prev"><a href="./Instructions.html">Prev</a></div>
+<div id="next"><a href="./Interrupt.html">Next</a></div>
 </body>
 </html>

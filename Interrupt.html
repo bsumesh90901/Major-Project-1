@@ -1,3 +1,5 @@
+<!--Latex References Fixed -->
+
 <html>
 <head>
 <title>Interrupt</title>
@@ -30,7 +32,7 @@
 	</div>
 	</p>
 	<p>
-	Figure~\ref{interrupt table} summarises the physical address to which the control is transferred for each interrupt. Note that the interrupts are disabled once this instruction is executed, since we do not allow interrupts to occur in kernel mode.
+	The following figure summarises the physical address to which the control is transferred for each interrupt. Note that the interrupts are disabled once this instruction is executed, since we do not allow interrupts to occur in kernel mode.
 	</p>
 	<img src="images/interrupt_table.png">
 	<div id="imageCaption">Interrupts and their locations in the memory</div>
@@ -44,12 +46,13 @@
 	Details of the <em>hardware interrupt</em> is as follows.
 
 	<ul>
-		<li><tt>INT 0 :</tt> This is the timer interrupt \index{Timer} which interrupts the processor forcing a context switch. It contains the code for the scheduler of the operating system (refer section~\ref{chp:scheduler}), which schedules the CPU time among the various active processes. Note that this interrupt is machine generated and cannot be called.
+<a name="INT">
+		<li><tt>INT 0 :</tt> This is the timer interrupt which interrupts the processor forcing a context switch. It contains the code for the scheduler of the operating system, which schedules the CPU time among the various active processes. Note that this interrupt is machine generated and cannot be called.
 
-		<p>Details of \emph{software interrupts} are as follows.</p>
+		<p>Details of <em>software interrupts</em> are as follows.</p>
 		<ul>
-		<li><tt>INT 1--4:</tt> These interrupts are used for the various file system calls. (Refer section~\ref{fssyscall} for File System Calls)
-		<li><tt>INT 5--7:</tt> These interrupts are used for the various process system calls. (Refer section~\ref{procsyscall} for Process System Calls)
+		<li><tt>INT 1--4:</tt> These interrupts are used for the various file system calls.
+		<li><tt>INT 5--7:</tt> These interrupts are used for the various process system calls.
 		</ul>
 	</ul>
 	The interrupts 1--7  are unprivileged and can be called from user mode.
@@ -81,10 +84,13 @@
 		</ol>
 		</p>
 	<p>
-	Figure~\ref{fig:calling_convention} explains the state of the stack at various stages.
+	The following figure explains the state of the stack at various stages.
 	</p>
 	<img src="./images/calling_convention.png" alt="Calling Convention">
 	<div id="imageCaption">Recommended calling and returning convention for interrupts</div>
-<footer>The convention given above is already built into the AP-SIL compiler. It has been given only to help you understand the internal workings better.</footer>
+<footer>The convention given above is already built into the APSIL compiler. It has been given only to help you understand the internal workings better.</footer>
+
+<div id="prev"><a href="./Instructions.html">Prev</a></div>
+<div id="next"><a href="./FileSystem.html">Next</a></div>
 </body>
 </html>

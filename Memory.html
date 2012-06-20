@@ -1,3 +1,5 @@
+<!--Latex References Fixed -->
+
 <html>
 <head>
 <title>Memory</title>
@@ -7,44 +9,44 @@
 
 
 <h2>Introduction</h2> 
-
+<a name="Mem">
 	<table border="1">
 	<caption>Outline of the main memory</caption>
 			<tr>
 			<th>Page no</th><th>Contents</th><th>Word addr</th>
 			<tr>
-			<td>0</td><td>\hyperref[lbl:romcode]{ROM code}</td><td> 0 -- 255</td> 
+			<td>0</td><td><a href="./OSStartupCode.html#ROM">ROM code</a></td><td> 0 -- 255</td> 
 			<tr>
-			<td>1 </td><td>\hyperref[lbl:oscode]{OS Startup code}</td><td>256 -- 511</td> 
+			<td>1 </td><td><a href="./OSStartupCode.html#OSStartup">OS Startup code</a></td><td>256 -- 511</td> 
 			<tr>
 			<td rowspan="5"> 2 </td>
-			<td>\hyperref[lbl:pgtbl]{Static Page Tables}</td><td> 512 -- 559</td>
+			<td><a href="./Process.html#PageTable">Static Page Tables</a></td><td> 512 -- 559</td>
 			<tr>
-			<td>\hyperref[lbl:memlst]{Memory Free List}</td><td>560 -- 623</td>
+			<td><a href="#MemFreeList">Memory Free List</a></td><td>560 -- 623</td>
 			<tr>
-			<td>\hyperref[lbl:gft]{Global File Table}</td><td>624 -- 719</td>
+			<td><a href="./FileSystemCalls.html#GFT">Global File Table</a></td><td>624 -- 719</td>
 			<tr>
-			<td>\hyperref[lbl:rdylst]{Ready List}</td><td>720 -- 731</td>
+			<td><a href="./Process.html#ReadyList">Ready List</a></td><td>720 -- 731</td>
 			<tr>
 			<td>Unallocated</td><td>732 -- 767</td> 
 			<tr>
 			<td rowspan="2"> 3 </td>
-			<td> \hyperref[lbl:proctbl]{Process Table} </td><td> 768 -- 959</td>
+			<td> <a href="./Process.html#ProcessTable">Process Table</a> </td><td> 768 -- 959</td>
 			<tr>
 			<td> Unallocated </td><td> 960 -- 1023</td>
 			<tr>
 			<td>4 </td>
-			<td rowspan="2">{\hyperref[lbl:fat]{File Allocation Table}}</td><td rowspan="2">1024 -- 1535</td>
+			<td rowspan="2"><a href="./FileSystem.html#FAT">File Allocation Table</a></td><td rowspan="2">1024 -- 1535</td>
 			<tr>
 			<td>5</td>
 			<tr>
 			<td>6 </td>
-			<td rowspan="2">{\hyperref[lbl:disklst]{Disk Free List}} </td><td rowspan="2">1536 -- 2047</td>
+			<td rowspan="2"><a href="./FileSystem.html#DiskFreeList">Disk Free List</a> </td><td rowspan="2">1536 -- 2047</td>
 			<tr>
 			<td>7 </td>
 			<tr>
 			<td>8 </td>
-			<td rowspan="3">{\hyperref[lbl:INITprocess]{INIT process}} </td><td rowspan="3">2048 -- 2815</td> 
+			<td rowspan="3"><a href="./OSStartupCode.html#INIT">INIT process</a> </td><td rowspan="3">2048 -- 2815</td> 
 			<tr>
 			<td>9</td>
 			<tr>
@@ -52,26 +54,26 @@
 			<tr>
 			<td>11 -- 55</td><td>User Programs</td><td>2816 -- 14335</td>
 			<tr>
-			<td>56</td><td> \hyperref[lbl:int]{INT 0}</td><td> 14336 -- 14591</td>
+			<td>56</td><td> <a href="./Interrupt.html#INT">INT 0</a></td><td> 14336 -- 14591</td>
 			<tr>
-			<td>57</td><td> \hyperref[lbl:int]{INT 1} </td><td> 14592 -- 14848</td>
+			<td>57</td><td> <a href="./Interrupt.html#INT">INT 1</a> </td><td> 14592 -- 14848</td>
 			<tr>
 			<td>...</td><td>...</td><td>...</td> 
 			<tr>
-			<td>63</td><td>\hyperref[lbl:int]{INT 7}</td><td>16128 -- 16383</td>  
+			<td>63</td><td><a href="./Interrupt.html#INT">INT 7</a></td><td>16128 -- 16383</td>  
 	</table>
 
 	<p>
 	<ul>
-		<li>The basic unit of memory in the ESIM architecture is a word. \index{Memory!Word}
+		<li>The basic unit of memory in the ESIM architecture is a word.
 		<li>The machine memory can be thought of as a linear sequence of words.
-		<li>A collection of 256 contiguous words is known as a <em>page</em>. \index{Memory!Page}
+		<li>A collection of 256 contiguous words is known as a <em>page</em>.
 		<li>The total size of the memory is 64 pages or 16384 (256 x 64) words.
-		<li>Each word in the memory is identified by the <em>word address</em> in the range 0 to 16383(256 x 64 - 1). Similarly, each page in the memory is identified by the <em>page number</em> \index{Memory!Page number} in the range 0 to 63.
+		<li>Each word in the memory is identified by the <em>word address</em> in the range 0 to 16383(256 x 64 - 1). Similarly, each page in the memory is identified by the <em>page number</em> in the range 0 to 63.
 	</ul>
 	</p>
 	<p class="example">
-		The 256<sup>th</sup> word of the memory has a word address 255 and belongs to page 0. In general, the n<sup>th</sup> word has the word address (n-1), where  1 &le; n &le; 16384 and belongs to the page &lfloor; (n-1)/256 &rfloor;. Refer figure~\ref{fig:mem_struct}. 
+		The 256<sup>th</sup> word of the memory has a word address 255 and belongs to page 0. In general, the n<sup>th</sup> word has the word address (n-1), where  1 &le; n &le; 16384 and belongs to the page &lfloor; (n-1)/256 &rfloor;.
 	</p>
 	<img src="./images/memoryAddressing.png" alt="Memory Addressing">
 	<div id="imageCaption">Illustration of Memory Addressing</div>
@@ -88,15 +90,15 @@
 	<img src="images/paging.png" alt="Paging Model of Esim">
 	<div id="imageCaption">Paging Model of Esim</div>
 	<p>
-	Refer ``Memory management strategies" in the book \cite{galvin} to know more about paging. 
+	Refer "Memory management strategies" in the book [SGG05] to know more about paging. 
 	</p>
 	<p>
-	The page table contains information relating to the actual location in the memory, i.e., the physical address, of the data specified by the logical address. Each entry of a page table contains the page number in the memory where the data specified by the logical address resides. Refer figure~\ref{fig:paging}.
+	The page table contains information relating to the actual location in the memory, i.e., the physical address, of the data specified by the logical address. Each entry of a page table contains the page number in the memory where the data specified by the logical address resides.
 	</p>
 
 <h2>Address Translation</h2>
 	<p>
-	It is the process of obtaining the physical address from the logical address. It is done by the machine in the following way. Refer book~\cite{Bach} for more details.
+	It is the process of obtaining the physical address from the logical address. It is done by the machine in the following way. Refer [Bac86] for more details.
 
 	<ol>
 		<li>The logical address generated by the CPU is divided by the page size (256) to get the <em>logical page number</em>.
@@ -109,26 +111,28 @@
 	<div id="imageCaption">Diagram illustrating address translation</div>
 
 	<p class="example">
-		Consider the scenario in figure~\ref{fig:paging_example}. Here the logical address generated is 570, so the page number is &lfloor; 570/265 &rfloor; = 2 and word address is 570 mod 256 = 58. The looked up value from the page table is 48. Thus the resultant physical address is 48x256 + 58.
+		Consider the scenario shown in figure above. Here the logical address generated is 570, so the page number is &lfloor; 570/265 &rfloor; = 2 and word address is 570 mod 256 = 58. The looked up value from the page table is 48. Thus the resultant physical address is 48x256 + 58.
 	</p>
-	
+<a name="MemFreeList">
 <h2>Memory Free List</h2>
 
 	<ul>
 		<li> The free list of the memory consists of 64 entries. Each entry is of size one word.
 		<li> The total size of the free list is thus 64 words (64 (= no. of entries) x 1 (= size of one entry) = 64 words).
-		<li> It is present in the second 64 words of page 2 of the memory. Refer figure~\ref{fig:main memory}.
+		<li> It is present in the second 64 words of page 2 of the memory.
 		<li> Each entry of the free list contains a value of either 0 or 1 indicating whether the corresponding page in the memory is free or not respectively.
 	</ul>
 
 	<p class="example"> 
-		Figure~\ref{fig:mem_free_list} indicates that pages 0, 1 and 63 of the memory are not free while pages 2 and 48 are free.
+		The following figure indicates that pages 0, 1 and 63 of the memory are not free while pages 2 and 48 are free.
 	</p>
 
 	<img src="images/memoryFreelist.png" alt="A sample free list of the memory">
 	<div id="imageCaption">A sample free list of the memory</div>
 
-	<p>The entire structure of memory is outlined in figure~\ref{fig:main memory}.</p>
+	<p>The entire structure of memory is outlined at the <a href="#Mem">beginning</a></p>
 
+<div id="prev"><a href="./Registers.html">Prev</a></div>
+<div id="next"><a href="./Process.html">Next</a></div>
 </body>
 <html>

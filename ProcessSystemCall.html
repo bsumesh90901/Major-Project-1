@@ -49,7 +49,7 @@ The process system call <i>Exec</i> invokes INT 6. INT 6 handles these system ca
 <ul>
 	<li> The entire process area of the currently executing process is replaced by that of the program specified in the argument (<tt>filename</tt>). 
 	<li> If the file specified by <tt>filename</tt> is not an executable then, an appropriate error code is returned.
-	<li> The memory copy of the FAT \index{File Allocation Table!Memory copy} is searched to get the location of the basic block of the file specified by <tt>filename</tt>, which is then loaded into the scratchpad.
+	<li> The memory copy of the FAT is searched to get the location of the basic block of the file specified by <tt>filename</tt>, which is then loaded into the scratchpad.
 	<li> This is then used to get the location in the disk of the blocks of the file to be loaded.
 	<li> The 2 code blocks and 1 data block of the file are loaded from the disk into the corresponding locations in the memory of the code blocks and data block of the current process.
 	<li> The PCB of the current process is modified to hold the values for that of the new process. The PID and page table, however, remains unchanged.
@@ -70,7 +70,7 @@ The process system call <i>Exit</i> invokes INT 7. INT 7 handles this system cal
 	
 	<li> The local file table is traversed and the global file table entry is removed.
 	
-	<li> The ready list entry corresponding to this process is set to zero thereby releasing all the data structures used by the process (fig~\ref{fig:ds with process}).
+	<li> The ready list entry corresponding to this process is set to zero thereby releasing all the data structures used by the process.
 	
 	<li> The ready list is then searched for the next available process. The INIT process is excluded in this search. If one such process is found, the PID is updated with the index of this entry in the ready list. If no such process is found, then the PID is set to the index of the INIT process in the ready list.
 	
@@ -81,7 +81,7 @@ The process system call <i>Exit</i> invokes INT 7. INT 7 handles this system cal
 
 <h2>INIT Process</h2>
 <p>
-The INIT process is the first user process loaded by the OS on the OS startup. INIT was previously defined in chapter~\ref{chp:osstartup} as a normal user program. Since multiprogramming functionalities have been added to the OS, INIT must be modified. The modified specification of INIT process is as follows:
+The INIT process is the first user process loaded by the OS on the OS startup. The specification of INIT process is as follows:
 <ul>
 	<li>  It provides an interface for the users to run other user programs.
 	<li> The user enters the name of a valid executable file (which should be made available in the disk) in the shell. If the specified file is not found, an appropriate error code is returned.
@@ -93,5 +93,8 @@ The INIT process is the first user process loaded by the OS on the OS startup. I
 All the user processes other than INIT are added to entries 1-11 of the ready queue keeping the 0th entry (corresponding to INIT) untouched. INIT loads the first process and thereafter all context switches occur among the other processes in the ready queue. INIT is switched back only when the ready queue (entries 1-11) is free so that the user can load another executable file via the shell. 
 </p>
 
+
+<div id="prev"><a href="./Multiprogramming.html">Prev</a></div>
+<div id="next"><a href="./Conclusion.html">Next</a></div>
 </body>
 </html>

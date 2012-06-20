@@ -1,3 +1,5 @@
+<!-- Latex References have been fixed-->
+
 <html>
 
 <head>
@@ -9,24 +11,24 @@
 <h2> Introduction </h2>
 
 	<p>
-	A detailed operating system specification was done in the work of ~\cite{group2}. This documentation was critically reviewed and modifications were done in many places to comply with our new design.
+	A detailed operating system specification was done in the work of [KAG+11]. This documentation was critically reviewed and modifications were done in many places to comply with our new design.
 	The major modifications done are the following:
 	<ol>
-	<li> Addition of 8 Kernel registers and 4 Temporary registers (Refer chapter \ref{chp:registers}).
+	<li> Addition of 8 Kernel registers and 4 Temporary registers.
 
-	<li> The ready queue data structure in the previous design was replaced with a ready list data structure for simplicity in design and implementation (Refer chapter \ref{chp:process}).
+	<li> The ready queue data structure in the previous design was replaced with a ready list data structure for simplicity in design and implementation.
 
-	<li> The maximum number of processes supported by the Operating System was reduced to 12 from 16 due to space constraints in memory (Refer chapter \ref{chp:process}
+	<li> The maximum number of processes supported by the Operating System was reduced to 12 from 16 due to space constraints in memory.
 
-	<li> Interrupt specifications were modified due to the size constratits of interrupt code (Refer chapter \ref{chp:int}).
+	<li> Interrupt specifications were modified due to the size constratits of interrupt code.
 
-	<li> The memory layout was modified to incorporate the new design decisions (Refer chapter \ref{chp:memory}).
+	<li> The memory layout was modified to incorporate the new design decisions.
 	</ol>
 	</p>
 
 <h2>Brief Machine Description</h2>
 
-	<p>The machine simulator is known as Extended Simple Integer Machine (\ESIM).
+	<p>The machine simulator is known as Extended Simple Integer Machine (ESIM).
 	It is an interrupt driven uniprocessor machine.
 
 	<img src="images/components_machine.png" alt="Components of Machine">
@@ -49,7 +51,7 @@
 	</p>
 	ESIM supports a maximum string length of <em>16</em>.
 	</p>
-<footer><b>DMA controller :</b> DMA (Direct Memory Access) is the hardware device in a real machine that facilitates the transfer of data from disk to the memory and vice versa}.</footer>
-<div><a href="./index.html">Prev</a></div>
+<div id="prev"><a href="./index.html">Prev</a></div>
+<div id="next"><a href="./Registers.html">Next</a></div>
 </body>
 </html>
