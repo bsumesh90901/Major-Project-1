@@ -3,9 +3,51 @@
 <html>
 <head>
 <title>Process</title>
+<link rel="stylesheet" type="text/css" href="./main.css"/>
 </head>
 <body>
 <h1>Process</h1>
+
+
+<div id="nav">
+<div id="nav1">
+<ul>
+<li><a href="index.html">Home</a>
+<li><a href="MachineSpecIntro.html">Machine Specification(Intro)</a>
+<li><a href="Registers.html">Registers</a>
+<li><a href="Memory.html">Memory</a>
+<li><a href="Process.html">Process</a>
+<li><a href="Instructions.html">Instructions</a>
+<li><a href="Interrupt.html">Interrupt</a>
+<li><a href="FileSystem.html">File System</a>
+<li><a href="OSIntroduction.html">OS Introduction</a>
+<li><a href="OSStartupCode.html">OS Startup Code</a>
+<li><a href="Halt.html">Halt</a>
+<li><a href="FileSystemCalls.html">File System Call</a>
+<li><a href="Multiprogramming.html">Multi-Programming</a>
+<li><a href="ProcessSystemCall.html">Process System Call</a>
+<li><a href="Conclusion.html">Conclusion</a>
+<li><a href="SPSIL.html">SPSIL</a>
+<li><a href="APSIL.html">APSIL</a>
+<li><a href="Bibliography.html">Bibliography</a>
+</ul>
+</div>
+
+
+<div id="nav2">
+<p class="nav2">
+Download as pdf
+</p>
+<ul>
+<li><a href="">Machine Spec</a>
+<li><a href="">APSIL</a>
+<li><a href="">SPSIL</a>
+</ul>
+</div>
+</div>
+
+<div id="main">
+
 	<h2>Introduction</h2>
 	<defn>
 		<b>Process :</b> Any program written by the user is run as a process by the kernel. 
@@ -26,8 +68,9 @@
 		The following figure shows the process structure.
 	</ul>
 	</p>
-	<img src="./images/process_structure.png" alt="Process Structure in memory.">
-	<div id="imageCaption">Process Structure in memory. Arrow shows the direction of stack growth</div>
+	<div id="imageCaption">
+	<img src="./images/process_structure.png" alt="Process Structure in memory."><br/>
+	Process Structure in memory. Arrow shows the direction of stack growth</div>
 
 <h2>Registers Associated with a Process</h2>
 	<ul>
@@ -52,8 +95,9 @@
 	<p>
 	It contains data pertaining to the current state of the process.
 	</p>
-	<img src="./images/pcb.png" alt="PCB">
-	<div id="imageCaption">Structure of Process Control Block</div>
+	<div id="imageCaption">
+	<img src="./images/pcb.png" alt="PCB"><br/>
+	Structure of Process Control Block</div>
 	<p>
 	Note that the size of each PCB (Process Control Block) is 16 words. 
 	</p>
@@ -104,7 +148,9 @@
 		<li> There are a total of 12 processes, thus accounting for the 192 words (12 x 16 words).
 		<li> The process table is indexed by multiplying the PID of a process by the size of a PCB to get the starting word address of the PCB of that process.
 	</ul>
-<div id="prev"><a href="./Memory.html">Prev</a></div>
+<div id="nav3"><div id="prev"><a href="./Memory.html">Prev</a></div>
 <div id="next"><a href="./Instructions.html">Next</a></div>
+</div>
+</div>
 </body>
 </html>

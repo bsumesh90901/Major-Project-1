@@ -3,10 +3,52 @@
 <html>
 <head>
 <title>Interrupt</title>
+<link rel="stylesheet" type="text/css" href="./main.css"/>
 </head>
 <body>
 <h1>Interrupts</h1>
 
+
+<div id="nav">
+<div id="nav1">
+<ul>
+<li><a href="index.html">Home</a>
+<li><a href="MachineSpecIntro.html">Machine Specification(Intro)</a>
+<li><a href="Registers.html">Registers</a>
+<li><a href="Memory.html">Memory</a>
+<li><a href="Process.html">Process</a>
+<li><a href="Instructions.html">Instructions</a>
+<li><a href="Interrupt.html">Interrupt</a>
+<li><a href="FileSystem.html">File System</a>
+<li><a href="OSIntroduction.html">OS Introduction</a>
+<li><a href="OSStartupCode.html">OS Startup Code</a>
+<li><a href="Halt.html">Halt</a>
+<li><a href="FileSystemCalls.html">File System Call</a>
+<li><a href="Multiprogramming.html">Multi-Programming</a>
+<li><a href="ProcessSystemCall.html">Process System Call</a>
+<li><a href="Conclusion.html">Conclusion</a>
+<li><a href="SPSIL.html">SPSIL</a>
+<li><a href="APSIL.html">APSIL</a>
+<li><a href="Bibliography.html">Bibliography</a>
+</ul>
+</div>
+
+
+<div id="nav2">
+<p class="nav2">
+Download as pdf
+</p>
+<ul>
+<li><a href="">Machine Spec</a>
+<li><a href="">APSIL</a>
+<li><a href="">SPSIL</a>
+</ul>
+</div>
+</div>
+
+
+
+<div id="main">
 <h2>Introduction</h2>
 	<p>
 	Interrupts are mechanisms by which the user code interrupts the execution of the processor and passes control to the kernel to accomplish low level functionalities like disk access, arithmetic exception handling etc.
@@ -34,8 +76,9 @@
 	<p>
 	The following figure summarises the physical address to which the control is transferred for each interrupt. Note that the interrupts are disabled once this instruction is executed, since we do not allow interrupts to occur in kernel mode.
 	</p>
-	<img src="images/interrupt_table.png">
-	<div id="imageCaption">Interrupts and their locations in the memory</div>
+	<div id="imageCaption">
+	<img src="images/interrupt_table.png"><br/>
+	Interrupts and their locations in the memory</div>
 
 
 <h2>Types of Interrupts</h2>
@@ -86,11 +129,13 @@
 	<p>
 	The following figure explains the state of the stack at various stages.
 	</p>
-	<img src="./images/calling_convention.png" alt="Calling Convention">
-	<div id="imageCaption">Recommended calling and returning convention for interrupts</div>
-<footer>The convention given above is already built into the APSIL compiler. It has been given only to help you understand the internal workings better.</footer>
+	<div id="imageCaption">
+	<img src="./images/calling_convention.png" alt="Calling Convention"><br/>
+	Recommended calling and returning convention for interrupts</div>
 
-<div id="prev"><a href="./Instructions.html">Prev</a></div>
+<div id="nav3"><div id="prev"><a href="./Instructions.html">Prev</a></div>
 <div id="next"><a href="./FileSystem.html">Next</a></div>
+</div>
+</div>
 </body>
 </html>

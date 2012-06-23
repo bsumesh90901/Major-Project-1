@@ -3,14 +3,56 @@
 <html>
 <head>
 <title>OS Introduction</title>
+<link rel="stylesheet" type="text/css" href="./main.css"/>
 </head>
 <body>
 
 <h1>Introduction</h1>
+
+
+<div id="nav">
+<div id="nav1">
+<ul>
+<li><a href="index.html">Home</a>
+<li><a href="MachineSpecIntro.html">Machine Specification(Intro)</a>
+<li><a href="Registers.html">Registers</a>
+<li><a href="Memory.html">Memory</a>
+<li><a href="Process.html">Process</a>
+<li><a href="Instructions.html">Instructions</a>
+<li><a href="Interrupt.html">Interrupt</a>
+<li><a href="FileSystem.html">File System</a>
+<li><a href="OSIntroduction.html">OS Introduction</a>
+<li><a href="OSStartupCode.html">OS Startup Code</a>
+<li><a href="Halt.html">Halt</a>
+<li><a href="FileSystemCalls.html">File System Call</a>
+<li><a href="Multiprogramming.html">Multi-Programming</a>
+<li><a href="ProcessSystemCall.html">Process System Call</a>
+<li><a href="Conclusion.html">Conclusion</a>
+<li><a href="SPSIL.html">SPSIL</a>
+<li><a href="APSIL.html">APSIL</a>
+<li><a href="Bibliography.html">Bibliography</a>
+</ul>
+</div>
+
+
+<div id="nav2">
+<p class="nav2">
+Download as pdf
+</p>
+<ul>
+<li><a href="">Machine Spec</a>
+<li><a href="">APSIL</a>
+<li><a href="">SPSIL</a>
+</ul>
+</div>
+</div>
+
+<div id="main">
+
 	<p>
 	The OS provides an interface to the user to interact with the hardware. Users write programs that make use of various resources like disk, memory, processor etc. These programs are run as processes on the machine.
 
-	The system programmers use the language SP-SIL for writing the Operating System. User programs to test the various functionalities of the Operating System can be written in AP-SIL. Refer the documents <a href="./SPSIL.htm">spsil</a> and <a href="./APSIL.html">apsil</a> for the complete documentation of these tools.
+	The system programmers use the language SP-SIL for writing the Operating System. User programs to test the various functionalities of the Operating System can be written in AP-SIL. Refer the documents <a href="./SPSIL.html">spsil</a> and <a href="./APSIL.html">apsil</a> for the complete documentation of these tools.
 
 	A detailed operating system specification was done in the works of [GDKI11] and [KAG+11]. This documentation was critically reviewed and modifications were done in many places to comply with our new design.
 	The major modifications done are the following:
@@ -52,7 +94,9 @@
 			A process needs resources like disk, memory etc while executing. The OS caters to these needs of the process by providing an interface  known as the <em>system call interface</em>. Refer <a href="./FileSystemCalls.html">File System Calls</a> and <a href="./ProcessSystemCall.html">Process System Calls</a> to know more about system calls.
 			</p>
 			
-<div id="prev"><a href="./FileSystem.html">Prev</a></div>
+<div id="nav3"><div id="prev"><a href="./FileSystem.html">Prev</a></div>
 <div id="next"><a href="./OSStartupCode.html">Next</a></div>
+</div>
+</div>
 </body>
 </html>

@@ -1,11 +1,57 @@
 <html>
 <head>
 <title>APSIL</title>
+<link rel="stylesheet" type="text/css" href="./main.css"/>
 </head>
 <body>
 
 
 <h1>APSIL</h1>
+
+
+
+
+
+<div id="nav">
+<div id="nav1">
+<ul>
+<li><a href="index.html">Home</a>
+<li><a href="MachineSpecIntro.html">Machine Specification(Intro)</a>
+<li><a href="Registers.html">Registers</a>
+<li><a href="Memory.html">Memory</a>
+<li><a href="Process.html">Process</a>
+<li><a href="Instructions.html">Instructions</a>
+<li><a href="Interrupt.html">Interrupt</a>
+<li><a href="FileSystem.html">File System</a>
+<li><a href="OSIntroduction.html">OS Introduction</a>
+<li><a href="OSStartupCode.html">OS Startup Code</a>
+<li><a href="Halt.html">Halt</a>
+<li><a href="FileSystemCalls.html">File System Call</a>
+<li><a href="Multiprogramming.html">Multi-Programming</a>
+<li><a href="ProcessSystemCall.html">Process System Call</a>
+<li><a href="Conclusion.html">Conclusion</a>
+<li><a href="SPSIL.html">SPSIL</a>
+<li><a href="APSIL.html">APSIL</a>
+<li><a href="Bibliography.html">Bibliography</a>
+</ul>
+</div>
+
+
+<div id="nav2">
+<p class="nav2">
+Download as pdf
+</p>
+<ul>
+<li><a href="">Machine Spec</a>
+<li><a href="">APSIL</a>
+<li><a href="">SPSIL</a>
+</ul>
+</div>
+</div>
+
+<div id="main">
+
+
 
 <h2>Introduction</h2>
 <p>
@@ -16,7 +62,7 @@ This document briefly describes the programming constructs, syntax and semantics
 </p>
 <p>
 A typical APSIL program is orgnaized in the following way. 
-<div id="syntax">
+<div class="syntax">
 Global Declarations<br/>
 ...<br/>
 Function Definitions<br/>
@@ -73,7 +119,7 @@ The following are the operators and delimiters in APSIL :
 <p>
 Identifiers are names of variables and user-defined functions. Identifiers should start with an alphabet, and may contain both alphabets and digits. Special characters are not allowed in identifiers.
 </p>
-<div id="syntax">
+<div class="syntax">
 identifier -> (alphabet)(alphabet | digit)*
 </div>
 
@@ -116,7 +162,7 @@ Declarations should be made for  variables and functions defined in the APSIL pr
 <p>
 Global variables are declared in the first section of the program within a <b>decl</b> ... <b>enddecl</b> block. Global variables can be accessed from any function in the program. Global variables can be of integer, string, integer array or string array datatypes. Global variables are declared with its datatype followed by the variable name. If the variable refers to an array the size of the array must be given in square brackets. The general form of declarations is as follows 
 </p>
-<div id="syntax">
+<div class="syntax">
 type variable_name;}
 
 type variable_name[size];
@@ -132,8 +178,8 @@ For every function except the <b>main()</b> function defined in a APSIL program,
 <p>
 A function declaration should specify the name of the function, the name and type of each of its arguments and the return type of the function. A function can have integer/string arguments. Parameters may be passed by value or reference. Arrays cannot be passed as arguments. If a global variable name appears as an argument, then within the scope of the function, the new declaration will be valid and global variable declaration is suppressed. Different functions may have arguments of the same name. For arguments that are passed by reference, the argument name is preceded by an ampersand(&) in the function declaration. The return type of a function must be either integer or string. The general form of declarations is as follows:
 </p>
-<div id="syntax">
-type function_name (type1 argument1,argument2,...; type2 argument1,argument2,...;...);
+<div class="syntax">
+type function_name (type1 argument1,argument2,...; type2 argument1, argument2, ...;...);
 </div>
 <p class="example">
 Examples for global declarations<br/>
@@ -154,7 +200,7 @@ enddecl
 <p>
 Local variables can be declared anywhere inside a function definition except in the body of <b>if</b> and <b>while</b>. Local variables will have a function scope, i.e. it can only be accessed in the function in which it is declared. Arguments of a function are treated as local variables. Local variables can be integer or string. Arrays cannot be declared locally. All globally declared variables are visible inside a function, unless suppressed by a re-declaration. The general form of declarations is as follows:
 </p>
-<div id="syntax">
+<div class="syntax">
 type variable_name;
 </div>
 
@@ -162,7 +208,7 @@ type variable_name;
 <p>
 Every APSIL program must have a <b>main()</b> function and zero or more user-defined functions. Every function other than the <b>main()</b> function must be declared within the <b>decl ... enddecl</b> block. The general form of a function definition is given below 
 </p>
-<div id="syntax">
+<div class="syntax">
 
 type function_name(ArgumentList)<br/>
 { <br/>
@@ -205,7 +251,7 @@ Standard  meanings apply to these operators. The operators take two arithmetic e
 <p>
 All functions except the <b>main()</b> function can be invoked from any other function including itself. The general form of a function call is:
 </p>
-<div id="syntax">
+<div class="syntax">
 function_name(value1,value1...);
 </div>
 <p>
@@ -222,7 +268,7 @@ Statements control the execution of the program. All statements in APSIL are ter
 <p>
 The APSIL assignment statement assigns the value of an expression to a variable, or an indexed array of the same type or a string value to a string variable. <b>=</b> is known as the assignment operator. Initialization during declaration is not allowed in APSIL. The general syntax is as follows:
 </p>
-<div id="syntax">
+<div class="syntax">
 variable_name = string_value / array_variable / expression ;
 </div>
 
@@ -234,7 +280,7 @@ variable_name = string_value / array_variable / expression ;
 <p>
 <b>If</b> statements specify the conditional execution of two branches according to the value of a boolean expression. If the expression evaluates to true, the <b>if</b> branch is executed, otherwise, if present, the <b>else</b>  branch is executed. The <b>else</b> part is optional. The general syntax is as follows:
 </p>
-<div id="syntax">
+<div class="syntax">
 
 if (logical expression) then  <br/>
 &nbsp;statements; <br/>
@@ -248,7 +294,7 @@ endif; <br/>
 <p>
 <b>While</b> statement iteratively executes a set of statements based on a condition which is a logical expression.  The statements are iteratively executed as long as the logical expression evaluates to true.
 </p>
-<div id="syntax">
+<div class="syntax">
 while (logical expression) do  <br/>
 &nbsp;statements; <br/>
 endwhile; <br/>
@@ -258,7 +304,7 @@ endwhile; <br/>
 <p>
 <b>Break</b> statement is a statement which is used in a while loop block. This statement stops the execution of the loop in which it is used and passes the control of execution to the next statement after the loop. This statement cannot be used anywhere else other than while loop. The syntax is as follows:
 </p>
-<div id="syntax">
+<div class="syntax">
 break;
 </div>
 
@@ -266,7 +312,7 @@ break;
 <p>
 <b>Continue</b> statement is a statement which is also used only in a while loop block. This statement skips the current iteration of the loop and passes the control to the next iteration after checking the loop condition. The syntax is as follows:
 </p>
-<div id="syntax">
+<div class="syntax">
 continue;
 </div>
 
@@ -283,7 +329,7 @@ return expression;
 <p>
 The standard input and output statements in APSIL are <b>read</b> and <b>write</b> respectively. The read statement reads an integer value from the standard input device into an integer variable or an indexed array variable or a string value into a string variable. The write statement outputs a string literal or the value of string variable or an arithmetic expression  into the standard output.
 </p>
-<div id="syntax">
+<div class="syntax">
 read variable_name;<br/>
 
 write expression / string;
@@ -301,7 +347,7 @@ System Calls allow the programs written in APSIL to interact with the operating 
 <p>
 Creates a file with the specified filename in the filesystem. The return value of this system call is 0 in case of success and the appropriate error code in case of failure.
 </p>
-<div id="syntax">
+<div class="syntax">
 integer Create(string filename);
 </div>
 
@@ -310,7 +356,7 @@ integer Create(string filename);
 <p>
 Returns a file descriptor of the file in the filesystem with the specified filename. The file descriptor is an integer value. If the <b>Open</b> fails, an appropriate error code is returned.
 .</p>
-<div id="syntax">
+<div class="syntax">
 integer Open(string fileName);
 </div>
 
@@ -319,7 +365,7 @@ integer Open(string fileName);
 <p>
 Reads the specified number of words(16 bytes) from a file which has the specified file descriptor into a string array. The return value of this system call is the number of words successfully read. If the <b>Read</b> fails, an appropriate error code is returned.
 </p>
-<div id="syntax">
+<div class="syntax">
 nteger Read(integer fileDescriptor, string buffer[], integer numWords);
 </div>
 
@@ -327,7 +373,7 @@ nteger Read(integer fileDescriptor, string buffer[], integer numWords);
 <p>
 Writes the specified number of words from the string buffer to a file in the filesystem with the specified file descriptor. The return value of this system call is the number of words successfully written. If the <b>Write</b> fails, an appropriate error code is returned.
 </p>
-<div id="syntax">
+<div class="syntax">
 integer Write(integer fileDescriptor, string buffer[], integer numWords);
 </div>
 
@@ -335,7 +381,7 @@ integer Write(integer fileDescriptor, string buffer[], integer numWords);
 <p>
 <b>Seek</b> is used to change the read/write head position in a file. It moves the head to the specified number of words from the beginning of the file. The return value of this system call is 0 in case of success and the appropriate error code in case of failure.
 </p>
-<div id="syntax">
+<div class="syntax">
 integer Seek(integer fileDescriptor, integer numWords);
  </div>
  
@@ -343,7 +389,7 @@ integer Seek(integer fileDescriptor, integer numWords);
 <p>
 This system call is used to close an open file. The return value of this system call is 0 in case of success and the appropriate error code in case of failure.
 </p>
-<div id="syntax">
+<div class="syntax">
 integer Close(integer fileDescriptor);
 </div>
 
@@ -353,7 +399,7 @@ This system call is used to delete the file from the file system whose name is s
 argument. The return value of this system call is 0 in case of success and the appropriate error code in case
 of failure.
 </p>
-<div id="syntax">
+<div class="syntax">
 integer Delete(string fileName);
 </div>
 
@@ -362,7 +408,7 @@ integer Delete(string fileName);
 <p>
 This system call is used to create a copy of the current process in the system. The return value of this system call is the PID of the child process for the parent, and 0 for the child.
 </p>
-<div id="syntax">
+<div class="syntax">
 integer Fork();
 </div>
 
@@ -373,7 +419,7 @@ integer Fork();
 This system call is used to load the program, whose name is specified in the argument, in the
 memory space of the current process and start its execution. The return value of this system call is 1 in case of failure.
 </p>
-<div id="syntax">
+<div class="syntax">
 integer Exec(string fileName);
 </div>
 
@@ -383,7 +429,7 @@ integer Exec(string fileName);
 <p>
 This system call is used to terminate the execution of the process which invoked it and remove it from the memory.
 </p>
-<div id="syntax">
+<div class="syntax">
 void Exit();
 </div>
 
@@ -391,12 +437,14 @@ void Exit();
 <p>
 This system call is used to halt the machine.
 </p>
-<div id="syntax">
+<div class="syntax">
 void Halt();
 </div>
 
 
-<div id="prev"><a href="./SPSIL.html">Prev</a></div>
+<div id="nav3"><div id="prev"><a href="./SPSIL.html">Prev</a></div>
 <div id="next"><a href="./Bibliography.html">Next</a></div>
+</div>
+</div>
 </body>
 </html>

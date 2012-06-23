@@ -4,10 +4,52 @@
 <html>
 <head>
 <title>File System Calls</title>
+<link rel="stylesheet" type="text/css" href="./main.css"/>
 </head>
 <body>
 
 <h1>File System Calls</h1>
+
+
+
+<div id="nav">
+<div id="nav1">
+<ul>
+<li><a href="index.html">Home</a>
+<li><a href="MachineSpecIntro.html">Machine Specification(Intro)</a>
+<li><a href="Registers.html">Registers</a>
+<li><a href="Memory.html">Memory</a>
+<li><a href="Process.html">Process</a>
+<li><a href="Instructions.html">Instructions</a>
+<li><a href="Interrupt.html">Interrupt</a>
+<li><a href="FileSystem.html">File System</a>
+<li><a href="OSIntroduction.html">OS Introduction</a>
+<li><a href="OSStartupCode.html">OS Startup Code</a>
+<li><a href="Halt.html">Halt</a>
+<li><a href="FileSystemCalls.html">File System Call</a>
+<li><a href="Multiprogramming.html">Multi-Programming</a>
+<li><a href="ProcessSystemCall.html">Process System Call</a>
+<li><a href="Conclusion.html">Conclusion</a>
+<li><a href="SPSIL.html">SPSIL</a>
+<li><a href="APSIL.html">APSIL</a>
+<li><a href="Bibliography.html">Bibliography</a>
+</ul>
+</div>
+
+
+<div id="nav2">
+<p class="nav2">
+Download as pdf
+</p>
+<ul>
+<li><a href="">Machine Spec</a>
+<li><a href="">APSIL</a>
+<li><a href="">SPSIL</a>
+</ul>
+</div>
+</div>
+
+<div id="main">
 
 <h2>Scratchpad</h2>
 <p>
@@ -25,8 +67,9 @@ Before explaining the system calls, we introduce two data structures : <i>Global
 <a name = "GFT">
 	<li> <b>Global File Table</b>
 	 It is a table consisting of a list of all the open files in the system. Since each of the 12 processes can open 4 files at a time, this table consists of a maximum of 48 entries. Each entry of the global file table has the following structure as shown in figure.</li>
-	<img src="./images/gft_struct.png" alt="GFT Structure">
-	<div id="imageCaption">Structure of a GFT entry</div>
+	<div id="imageCaption">
+	<img src="./images/gft_struct.png" alt="GFT Structure"><br/>
+	Structure of a GFT entry</div>
 	 
 	 <ul>
 		 <li> <b>FAT index entry :</b> It is used to index the memory copy of the file allocation table to get information about that particular file.
@@ -176,8 +219,9 @@ The file system calls <i>Read</i> and <i>Seek</i> invoke INT 3. INT 3 handles th
 </ol>
 
 
-<img src="./images/access_method.png" alt="Accessing FAT entry">
-<div id="imageCaption">Diagram showing the method of accessing FAT entry</div>
+<div id="imageCaption">
+<img src="./images/access_method.png" alt="Accessing FAT entry"><br/>
+Diagram showing the method of accessing FAT entry</div>
 
 <h3>INT 4</h3>
 <p>
@@ -214,7 +258,9 @@ The file system call <i>Write</i> invoke INT 4. INT 4 handles these system calls
 	<li> The return value of this system call is the number of words successfully written. In case of an error, an appropriate error code is returned.
 </ul>
 
-<div id="prev"><a href="./Halt.html">Prev</a></div>
+<div id="nav3"><div id="prev"><a href="./Halt.html">Prev</a></div>
 <div id="next"><a href="./Multiprogramming.html">Next</a></div>
+</div>
+</div>
 </body>
 </html>

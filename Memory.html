@@ -3,14 +3,54 @@
 <html>
 <head>
 <title>Memory</title>
+<link rel="stylesheet" type="text/css" href="./main.css"/>
 </head>
 <body>
 <h1>Memory</h1>
 
 
+<div id="nav">
+<div id="nav1">
+<ul>
+<li><a href="index.html">Home</a>
+<li><a href="MachineSpecIntro.html">Machine Specification(Intro)</a>
+<li><a href="Registers.html">Registers</a>
+<li><a href="Memory.html">Memory</a>
+<li><a href="Process.html">Process</a>
+<li><a href="Instructions.html">Instructions</a>
+<li><a href="Interrupt.html">Interrupt</a>
+<li><a href="FileSystem.html">File System</a>
+<li><a href="OSIntroduction.html">OS Introduction</a>
+<li><a href="OSStartupCode.html">OS Startup Code</a>
+<li><a href="Halt.html">Halt</a>
+<li><a href="FileSystemCalls.html">File System Call</a>
+<li><a href="Multiprogramming.html">Multi-Programming</a>
+<li><a href="ProcessSystemCall.html">Process System Call</a>
+<li><a href="Conclusion.html">Conclusion</a>
+<li><a href="SPSIL.html">SPSIL</a>
+<li><a href="APSIL.html">APSIL</a>
+<li><a href="Bibliography.html">Bibliography</a>
+</ul>
+</div>
+
+
+<div id="nav2">
+<p class="nav2">
+Download as pdf
+</p>
+<ul>
+<li><a href="">Machine Spec</a>
+<li><a href="">APSIL</a>
+<li><a href="">SPSIL</a>
+</ul>
+</div>
+</div>
+
+<div id="main">
+
 <h2>Introduction</h2> 
 <a name="Mem">
-	<table border="1">
+	<table id="mainMem">
 	<caption>Outline of the main memory</caption>
 			<tr>
 			<th>Page no</th><th>Contents</th><th>Word addr</th>
@@ -75,8 +115,9 @@
 	<p class="example">
 		The 256<sup>th</sup> word of the memory has a word address 255 and belongs to page 0. In general, the n<sup>th</sup> word has the word address (n-1), where  1 &le; n &le; 16384 and belongs to the page &lfloor; (n-1)/256 &rfloor;.
 	</p>
-	<img src="./images/memoryAddressing.png" alt="Memory Addressing">
-	<div id="imageCaption">Illustration of Memory Addressing</div>
+	<div id="imageCaption">
+	<img src="./images/memoryAddressing.png" alt="Memory Addressing"><br/>
+	Illustration of Memory Addressing</div>
 
 <h2>Page Table</h2>
 
@@ -87,8 +128,9 @@
 		<li><b>Physical address :</b> It is the exact location of the data in the main memory.
 	</ul>
 	</p>
-	<img src="images/paging.png" alt="Paging Model of Esim">
-	<div id="imageCaption">Paging Model of Esim</div>
+	<div id="imageCaption">
+	<img src="images/paging.png" alt="Paging Model of Esim"><br/>
+	Paging Model of Esim</div>
 	<p>
 	Refer "Memory management strategies" in the book [SGG05] to know more about paging. 
 	</p>
@@ -107,8 +149,9 @@
 		<li>The <em>offset</em> got in step 2 is then used to refer to the word in the physical page containing the data.
 	</ol>
 	</p>
-	<img src="./images/paging_example.png" alt="Example of paging">
-	<div id="imageCaption">Diagram illustrating address translation</div>
+	<div id="imageCaption">
+	<img src="./images/paging_example.png" alt="Example of paging"><br/>
+	Diagram illustrating address translation</div>
 
 	<p class="example">
 		Consider the scenario shown in figure above. Here the logical address generated is 570, so the page number is &lfloor; 570/265 &rfloor; = 2 and word address is 570 mod 256 = 58. The looked up value from the page table is 48. Thus the resultant physical address is 48x256 + 58.
@@ -127,12 +170,15 @@
 		The following figure indicates that pages 0, 1 and 63 of the memory are not free while pages 2 and 48 are free.
 	</p>
 
-	<img src="./images/memoryFreelist.png" alt="A sample free list of the memory">
-	<div id="imageCaption">A sample free list of the memory</div>
+	<div id="imageCaption">
+	<img src="./images/memoryFreelist.png" alt="A sample free list of the memory"><br/>
+	A sample free list of the memory</div>
 
 	<p>The entire structure of memory is outlined at the <a href="#Mem">beginning</a></p>
 
-<div id="prev"><a href="./Registers.html">Prev</a></div>
+<div id="nav3"><div id="prev"><a href="./Registers.html">Prev</a></div>
 <div id="next"><a href="./Process.html">Next</a></div>
+</div>
+</div>
 </body>
 <html>

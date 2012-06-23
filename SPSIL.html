@@ -1,9 +1,53 @@
 <html>
 <head>
 <title>SPSIL</title>
+<link rel="stylesheet" type="text/css" href="./main.css"/>
 </head>
 <body>
 <h1>SPSIL</h1>
+
+
+
+<div id="nav">
+<div id="nav1">
+<ul>
+<li><a href="index.html">Home</a>
+<li><a href="MachineSpecIntro.html">Machine Specification(Intro)</a>
+<li><a href="Registers.html">Registers</a>
+<li><a href="Memory.html">Memory</a>
+<li><a href="Process.html">Process</a>
+<li><a href="Instructions.html">Instructions</a>
+<li><a href="Interrupt.html">Interrupt</a>
+<li><a href="FileSystem.html">File System</a>
+<li><a href="OSIntroduction.html">OS Introduction</a>
+<li><a href="OSStartupCode.html">OS Startup Code</a>
+<li><a href="Halt.html">Halt</a>
+<li><a href="FileSystemCalls.html">File System Call</a>
+<li><a href="Multiprogramming.html">Multi-Programming</a>
+<li><a href="ProcessSystemCall.html">Process System Call</a>
+<li><a href="Conclusion.html">Conclusion</a>
+<li><a href="SPSIL.html">SPSIL</a>
+<li><a href="APSIL.html">APSIL</a>
+<li><a href="Bibliography.html">Bibliography</a>
+</ul>
+</div>
+
+
+<div id="nav2">
+<p class="nav2">
+Download as pdf
+</p>
+<ul>
+<li><a href="">Machine Spec</a>
+<li><a href="">APSIL</a>
+<li><a href="">SPSIL</a>
+</ul>
+</div>
+</div>
+
+
+<div id="main">
+
 <h2>Introduction</h2>
 <p>
 <i>SPSIL</i> or <i>System Programmer's Simple Integer Language</i> is an untyped programming language designed for implementation of an operating system on ESIM <i>(Extended Simple Integer Machine)</i> architecture. The language is minimalistic and consists only of basic constructs required for the implementation. Programming using SPSIL requires a  basic understanding of the underlying ESIM architecture and operating system concepts. 
@@ -78,7 +122,7 @@ SPSIL doesn't allow the use of declared variables. Instead a fixed set of regist
 <table>
 <td>R0-R7 </td><td> Program Registers </td>
 <tr>
-VS0-S7 </td><td> Kernel Registers </td>
+<td>S0-S7 </td><td> Kernel Registers </td>
 <tr>
 <td>BP 		</td><td> Base Pointer </td>
 <tr>
@@ -177,7 +221,7 @@ Statements control the execution of the program. All statements in SPSIL are ter
 Define statement is used to define a symbolic name for a value. Define statements should be  used before any other statment in an SPSIL program. The keyword <b>define</b> is used to associate a literal to a symbolic name.
 </p>
 
-<div id="syntax">
+<div class="syntax">
 define constant_name value;
 </div>
 
@@ -185,14 +229,14 @@ define constant_name value;
 <p>
 An <b>alias</b> statement is used to  associate a register with a name. <b>Alias</b> statements can be used anywhere in the program except within <b>if</b> and <b>while</b> statements.
 </p>
-<div id="syntax">alias  alias_name register_name ;</div>
+<div class="syntax">alias  alias_name register_name ;</div>
 
 
 <h3>Assignment Statement</h3>
 <p>
 The SPSIL assignment statement assigns the value of an  expression or value stored in a memory address to a register or a memory address. <b>=</b> is the assignment operator used in SPSIL. The operand on the right hand side of the operator is assigned to the left hand side. The general syntax is as follows:
 </p>
-<div id="syntax">
+<div class="syntax">
 Register /Alias  /[Address] = Expression / [Address] ;
 </div>
 
@@ -200,7 +244,7 @@ Register /Alias  /[Address] = Expression / [Address] ;
 <p>
 The SPSIL <b>strcpy</b> statement copies a string in one memory location to another memory location. Registers which store the  memory location of the destination and the source are given as R<sub>d</sub> and R<sub>s</sub> respectively.
 </p>
-<div id="syntax">
+<div class="syntax">
 strcpy(R<sub>d</sub>, R<sub>s</sub>);
 </div>
 
@@ -208,7 +252,7 @@ strcpy(R<sub>d</sub>, R<sub>s</sub>);
 <p>
 <b>if</b> statements specify the conditional execution of two branches according to the value of a logical expression. If the expression evaluates to 1, the <b>if</b> branch is executed, otherwise the <b>else</b>  branch is executed. The <b>else</b> part is optional. The general syntax is as follows:
 </p>
-<div id="syntax">
+<div class="syntax">
 if (logical expression) then<br/>
  &nbsp;statements;<br/>
 else<br/>
@@ -222,7 +266,7 @@ endif;
 <p>
 <b>while</b> statement iteratively executes a set of statements based on a condition. The condition is defined using a logical expression.  The statements are iteratively executed as long as the condition is true.
 </p>
-<div id="syntax">
+<div class="syntax">
 while (logical expression) do<br/>
 &nbsp;statements; <br/>
 endwhile;
@@ -232,7 +276,7 @@ endwhile;
 <p>
 <b>break</b> statement is a statement which is used in a while loop block. This statement stops the execution of the loop in which it is used and passes the control of execution to the next statement after the loop. This statement cannot be used anywhere else other than while loop. The syntax is as follows:
 </p>
-<div id="syntax">
+<div class="syntax">
 break;
 </div>
 
@@ -240,7 +284,7 @@ break;
 <p>
 <b>continue</b> statement is a statement which is also used only in a while loop block. This statement skips the current iteration of the loop and passes the control to the next iteration after checking the loop condition. The syntax is as follows:
 </p>
-<div id="syntax">
+<div class="syntax">
 continue;
 </div>
 
@@ -248,7 +292,7 @@ continue;
 <p>
 <b>ireturn</b> statement is used to pass control from kernel mode to user mode. The <b>ireturn</b> is generally used at the end of an interrupt code.
 </p>
-<div id="syntax">
+<div class="syntax">
 ireturn;
 </div>
 
@@ -263,7 +307,9 @@ store (page_number, block_number);
 </div>
 
 
-<div id="prev"><a href="./Conclusion.html">Prev</a></div>
+<div id="nav3"><div id="prev"><a href="./Conclusion.html">Prev</a></div>
 <div id="next"><a href="./APSIL.html">Next</a></div>
+</div>
+</div>
 </body>
 </html>
